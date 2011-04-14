@@ -2,6 +2,7 @@
 /**
  * Module dependencies.
  */
+console.log('in here');
 
 var faye    = require('faye'),
     express = require('express'),
@@ -14,6 +15,7 @@ var bayeux = new faye.NodeAdapter({
   mount: '/faye',
   timeout: 45
 });
+  console.log(faye + 'faye?');
 
 var app = module.exports = express.createServer();
 
