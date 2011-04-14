@@ -1,0 +1,17 @@
+{
+  "name": "idrmx",
+  "version": "0.0.1",
+  "repository": {},
+  "directories": {
+    "lib": ""
+  },
+  "engines": {
+    "node": "*"
+  },
+  "dependencies": {
+    "express": "*",
+    "faye": "*",
+    "mongoose": "*",
+    "underscore": "*"
+  }
+}
