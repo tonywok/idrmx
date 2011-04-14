@@ -56,11 +56,14 @@ app.get('/', function(req, res){
 app.post('/message', function(req, res) {
   Ping.findOne({url: req.query.url}, function(err, ping) {
     if (!ping) {
+      console.log("creating new ping");
       ping = new Ping({url: req.query.url});
     } else {
+      console.log("updating ping count");
       ping.count = ping.count + 1;
     }
     ping.save(function (err) {
+      console.log("ping saved!");
       if (!err) console.log('ping saved');
     });
     bayeux.getClient().publish('/channel', {ping: ping});
