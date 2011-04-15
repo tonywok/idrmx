@@ -9,8 +9,8 @@ var faye    = require('faye'),
     _       = require('underscore'),
     pings   = require('./lib/pings'),
     goose   = require('mongoose');
-    if (process.env['DUOSTACK_DBMONGODB']) {
-      var db = goose.connect(process.env['DUOSTACK_DBMONGODB']);
+    if (process.env['DUOSTACK_DB_MONGODB']) {
+      var db = goose.connect(process.env['DUOSTACK_DB_MONGODB']);
     } else {
       var db = goose.connect('mongodb://localhost/testy');
     }
