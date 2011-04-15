@@ -12,6 +12,7 @@
     "express": "2.2.2",
     "faye": "0.5.5",
     "mongoose": "1.2.0",
-    "underscore": "1.1.5"
+    "underscore": "1.1.5",
+    "jade": "*"
   }
 }

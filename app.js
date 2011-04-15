@@ -15,7 +15,6 @@ var bayeux = new faye.NodeAdapter({
   mount: '/faye',
   timeout: 45
 });
-  console.log(faye + 'faye?');
 
 var app = module.exports = express.createServer();
 
