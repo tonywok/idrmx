@@ -2,24 +2,36 @@
 /**
  * Module dependencies.
  */
-console.log('in here');
+console.log('loading server.js');
 
 var faye    = require('faye'),
-    express = require('express'),
+    express = require('express');
     _       = require('underscore'),
     pings   = require('./lib/pings'),
-    goose   = require('mongoose'),
-    db      = goose.connect('mongodb://localhost/testy');
+    goose   = require('mongoose');
+    if (process.env['DUOSTACK_DBMONGODB']) {
+      var db = goose.connect(process.env['DUOSTACK_DBMONGODB']);
+    } else {
+      var db = goose.connect('mongodb://localhost/testy');
+    }
+
+console.log(pings);
+
+console.log('loaded dependecies');
 
 var bayeux = new faye.NodeAdapter({
   mount: '/faye',
   timeout: 45
 });
 
+console.log('mounted faye');
+
 var app = module.exports = express.createServer();
 
 _.each([pings], function(model){ model.load(); });
 var Ping = db.model('Ping');
+
+console.log('bootstrap models');
 
 // Configuration
 
@@ -41,20 +53,21 @@ app.configure('production', function(){
   app.use(express.errorHandler());
 });
 
+console.log('configuration');
+
 // Routes
 
 app.get('/', function(req, res){
-  Ping.find({}, function(err, pings){
+  Ping.find({}, function(err, results){
     res.render('index', {
-      locals: {
-        title: 'You see me',
-        pings: pings
-      }
+      title: 'You see me',
+      pings: results
     });
   });
 });
 
 app.post('/message', function(req, res) {
+  console.log('received message');
   Ping.findOne({url: req.query.url}, function(err, ping) {
     if (!ping) {
       console.log("creating new ping");
