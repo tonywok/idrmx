@@ -8,7 +8,7 @@ $(function() {
     template.children('p:first').text(msg.ping.url);
     template.children('p:last').text(msg.ping.count);
     template.attr('id', '');
-    $('#pings').append(template);
+    $('#pings').prepend(template);
   });
 
   function computeColor(count) {
