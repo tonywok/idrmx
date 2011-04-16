@@ -1,6 +1,22 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;}
 
 a {
   color: #00B7FF;}
+
+#pings {
+  height: : 100%;
+  width: 520px;
+  margin: auto auto;}
+
+.ping {
+  float: left;
+  width: 100px;
+  height: 100px;
+  clear: right;
+  margin: 2px;}
+.ping p {
+  display: none;}
+
+#ping_template {
+  display: none;}

@@ -1,4 +1,3 @@
-
 /**
  * Module dependencies.
  */
@@ -18,8 +17,6 @@ var bayeux = new faye.NodeAdapter({
   mount: '/faye',
   timeout: 45
 });
-
-console.log('mounted faye');
 
 var app = module.exports = express.createServer();
 
@@ -58,8 +55,7 @@ app.get('/', function(req, res){
 });
 
 app.post('/message', function(req, res) {
-  console.log('received message');
-  Ping.findOne({url: req.query.url}, function(err, ping) {
+  Ping.findOne({url: req.query.url, }, function(err, ping) {
     if (!ping) {
       ping = new Ping({url: req.query.url});
     } else {

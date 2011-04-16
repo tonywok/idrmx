@@ -1,27 +1,9 @@
-!!! 5
-html(lang='en')
-  head
-    title #{title}
-    script(src:'javascripts/jquery-1.4.4.min.js')
-    script(src:'faye.js')
-    script
-      var client = new Faye.Client('http://idrmx.duostack.net:9980/faye', {
-        timeout: 120
-      });
-
-      client.subscribe('/channel', function(msg) {
-        var template = $('#ping_template').clone();
-        template.children('p:first').text(msg.ping.url);
-        template.children('p:last').text(msg.ping.count);
-        $('#pings').append(template);
-      });
-  body
-    h1 pubsub
-    #pings
-      - each ping in pings
-        .ping
-          p.url= ping.url
-          p.count= ping.count
-    #ping_template
-      p.url
-      p.count
+#pings
+  - each ping in pings
+    - var width = ping.count * 25;
+    .ping
+      p.url= ping.url
+      p.count= ping.count
+#ping_template.ping
+  p.url
+  p.count
