@@ -1,10 +1,11 @@
 #pings
   - each ping in pings
-    - var width = ping.count * 25;
     .ping
-      p.url= ping.url
-      p.count= ping.count
+      <a href='http://#{ping.url}'></a>
+      span.count= ping.count
+      span.instant= ping.instant
   .clear
 #ping_template.ping
-  p.url
-  p.count
+  a(href: '')
+  span.count
+  span.instant

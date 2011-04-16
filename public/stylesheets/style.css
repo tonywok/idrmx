@@ -13,8 +13,8 @@ a {
   width: 100px;
   height: 100px;
   clear: right;
-  margin: 2px;}
-.ping p {
+  margin: 1px;}
+.ping span.instant {
   display: none;}
 
 #ping_template {
