@@ -12,15 +12,14 @@ $(function() {
   });
 
   function computeColor(count) {
-    var green = Math.round((255 - (count * 5)));
+    var green = 255 - count;
+    var green = Math.round((255 - (count * 10)));
+    if (green < 255) green = 255;
     return "#ff" + green.toString(16) + "00";
   }
 
   $('.ping').each(function(i, ping) {
     var num_counts = $(ping).children('p:last').text();
-    var green = 255 - num_counts;
-    if (green > 255) green = 255;
-    console.log(computeColor(num_counts));
     $(ping).css('background-color', computeColor(num_counts));
   });
 });

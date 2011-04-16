@@ -48,7 +48,7 @@ app.configure('production', function(){
 app.get('/', function(req, res){
   Ping.find({}, function(err, results){
     res.render('index', {
-      title: 'You see me',
+      title: 'foobar',
       pings: results
     });
   });
@@ -60,6 +60,7 @@ app.post('/message', function(req, res) {
       ping = new Ping({url: req.query.url});
     } else {
       ping.count = ping.count + 1;
+      ping.instant = Date.now();
     }
     ping.save(function (err) {
       if (!err) console.log('ping saved');
