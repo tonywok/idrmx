@@ -19,8 +19,8 @@ $(function() {
   $('.ping').each(function(i, ping) {
     var num_counts = $(ping).children('p:last').text();
     var green = 255 - num_counts;
+    if (green > 255) green = 255;
     console.log(computeColor(num_counts));
     $(ping).css('background-color', computeColor(num_counts));
   });
-
 });
