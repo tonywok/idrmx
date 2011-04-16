@@ -14,7 +14,7 @@ $(function() {
   function computeColor(count) {
     var green = 255 - count;
     var green = Math.round((255 - (count * 10)));
-    if (green < 255) green = 255;
+    if (green < 0) green = 255;
     return "#ff" + green.toString(16) + "00";
   }
 
