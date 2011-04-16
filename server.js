@@ -57,7 +57,7 @@ app.get('/', function(req, res){
 });
 
 app.post('/message', function(req, res) {
-  Ping.findOne({url: req.query.url, }, function(err, ping) {
+  Ping.findOne({url: req.query.url }, function(err, ping) {
     if (!ping) {
       ping = new Ping({url: req.query.url});
     } else {

@@ -13,6 +13,15 @@ $(function() {
     window.open($(this).children('a:first').attr('href'));
   });
 
+  $('.ping').live({
+    "mouseover": function() {
+      $(this).children('span.count').css('display', 'block');
+    },
+    "mouseout": function() {
+      $(this).children('span.count').css('display', 'none');
+    }
+  });
+
   // faye pubsub
 
   var client = new Faye.Client('http://idrmx.duostack.net:9980/faye', {
@@ -26,7 +35,13 @@ $(function() {
       $('#pings').prepend(active_ping);
     } else {
       active_ping = $('.ping a[href=http://' + msg.ping.url + ']').parent();
-      updatePing(active_ping, msg.ping);
+      active_ping = updatePing(active_ping, msg.ping);
+    }
+    console.log("should animate");
+
+    for(var i=0; i<2; i++) {
+      active_ping.animate({opacity: 0}, 300);
+      active_ping.animate({opacity: 1}, 300);
     }
   });
 

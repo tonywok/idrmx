@@ -13,7 +13,17 @@ a {
   height: 75px;
   clear: right;
   margin: 1px;}
-.ping span {
+
+span.count {
+  display: none;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 20px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 5px 0 0 8px;
+  color: #666;}
+
+span.instant {
   display: none;}
 
 #ping_template {
