@@ -1,20 +1,19 @@
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;}
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #c3c3c3;
+  margin: 100px auto;
+  width: 616px;}
 
 a {
   color: #00B7FF;}
 
-#pings {
-  width: 100%;
-  margin: 0 auto;}
-
 .ping {
   float: left;
-  width: 100px;
-  height: 100px;
+  width: 75px;
+  height: 75px;
   clear: right;
   margin: 1px;}
-.ping span.instant {
+.ping span {
   display: none;}
 
 #ping_template {

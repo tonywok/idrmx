@@ -7,6 +7,12 @@ $(function() {
     $(ping).css('background-color', computeColor(count));
   });
 
+  // live
+
+  $('.ping').live('click', function() {
+    window.open($(this).children('a:first').attr('href'));
+  });
+
   // faye pubsub
 
   var client = new Faye.Client('http://idrmx.duostack.net:9980/faye', {
@@ -52,7 +58,7 @@ $(function() {
     } else if (green >= 0 && green <= 15) {
       green = "0" + green.toString(16);
     } else { green = green.toString(16); }
-    return "#00" + green + "ff";
+    return "#" + green + "ff" + "ee";
   }
 
 });

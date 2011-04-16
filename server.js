@@ -36,7 +36,7 @@ app.configure(function(){
 });
 
 app.configure('development', function(){
-  app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); 
+  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 });
 
 app.configure('production', function(){
@@ -46,9 +46,11 @@ app.configure('production', function(){
 // Routes
 
 app.get('/', function(req, res){
-  Ping.find({}, function(err, results){
+  var now = Date.now();
+  var week_ago = now - 604800000;
+  Ping.find({instant: {$gt: week_ago}}, function(err, results){
     res.render('index', {
-      title: 'foobar',
+      title: 'idrmx',
       pings: results
     });
   });
@@ -59,7 +61,13 @@ app.post('/message', function(req, res) {
     if (!ping) {
       ping = new Ping({url: req.query.url});
     } else {
-      ping.count = ping.count + 1;
+      var now = Date.now();
+      var week_ago = now - 604800000;
+      if (ping.instant > week_ago) {
+        ping.count = ping.count + 1;
+      } else {
+        ping.count = 1;
+      }
       ping.instant = Date.now();
     }
     ping.save(function (err) {
