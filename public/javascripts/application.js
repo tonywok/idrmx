@@ -15,10 +15,13 @@ $(function() {
 
   $('.ping').live({
     "mouseover": function() {
-      $(this).children('span.count').css('display', 'block');
+      $(this).css("opacity", .5);
+      var hover_url = $(this).children('a').attr('href').replace(/http:\/\//, '');
+      $('#header h1').text(hover_url);
     },
     "mouseout": function() {
-      $(this).children('span.count').css('display', 'none');
+      $('#header h1').text('idrmx.');
+      $(this).css("opacity", 1);
     }
   });
 
@@ -37,7 +40,6 @@ $(function() {
       active_ping = $('.ping a[href=http://' + msg.ping.url + ']').parent();
       active_ping = updatePing(active_ping, msg.ping);
     }
-    console.log("should animate");
 
     for(var i=0; i<2; i++) {
       active_ping.animate({opacity: 0}, 300);
@@ -73,7 +75,7 @@ $(function() {
     } else if (green >= 0 && green <= 15) {
       green = "0" + green.toString(16);
     } else { green = green.toString(16); }
-    return "#" + green + "ff" + "ee";
+    return "#" + "ff" + green + "0f";
   }
 
 });

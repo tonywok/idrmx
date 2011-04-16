@@ -56,7 +56,14 @@ app.get('/', function(req, res){
   });
 });
 
-app.post('/message', function(req, res) {
+function checkForSecret(req, res, next) {
+  if (req.query.secret !== process.env['IDRMX_SECRET']) {
+    return new next(Error("invalid secret key"));
+  }
+  next();
+}
+
+app.post('/message', checkForSecret, function(req, res) {
   Ping.findOne({url: req.query.url }, function(err, ping) {
     if (!ping) {
       ping = new Ping({url: req.query.url});

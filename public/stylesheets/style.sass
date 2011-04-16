@@ -1,21 +1,59 @@
+*
+  :margin 0
+  :padding 0
+
 body
-  :font 14px "Lucida Grande", Helvetica, Arial, sans-serif
-  :background-color #c3c3c3
-  :margin 100px auto
-  :width 616px
+  :font-family Georgia, "Times New Roman", Times, serif
+  :background-color #fff
+  :color #fff
 a
   :color #00B7FF
 
+#header
+  :position fixed
+  :width 100%
+  :height 100px
+  :top 0
+  :left 0
+  :background-color #222
+  :margin-bottom 100px
+  :border-bottom 1px sold #000
+
+  h1
+    :font-weight lighter
+    :text-shadow: 0 0 2px #000
+    :position relative
+    :font-size 2em
+    :line-height 3em
+    :text-align center
+
+#info
+  :background-color #eee
+  :margin 100px 0 25px 0
+  :padding 25px 200px
+  :border-bottom 1px solid #ddd
+
+  p
+    :color #333
+    :font-size 18px
+    :border-color #333
+    :border-top-style double
+    :border-bottom-style double
+    :padding 10px 20px
+    :margin: 25px 0
+
+#pings
+  :width 60%
+  :margin 2px auto
+
 .ping
-  :float left
+  :float right
   :width 75px
   :height 75px
-  :clear right
   :margin 1px
 
 span.count
   :display none
-  :font-family Georgia, "Times New Roman", Times, serif
   :font-size 20px
   :font-weight bold
   :font-style italic
@@ -24,7 +62,6 @@ span.count
 
 span.instant
   :display none
-
 
 #ping_template
   :display none
