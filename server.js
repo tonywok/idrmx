@@ -69,7 +69,8 @@ app.post('/message', checkForSecret, function(req, res) {
       ping = new Ping({url: req.query.url});
     } else {
       var now = Date.now();
-      var week_ago = now - 604800000;
+      var week_ago = now - 432000000;
+
       if (ping.instant > week_ago) {
         ping.count = ping.count + 1;
       } else {
