@@ -42,9 +42,11 @@ $(function() {
     }
 
     for(var i=0; i<2; i++) {
-      active_ping.animate({opacity: 0}, 300);
-      active_ping.animate({opacity: 1}, 300);
+      $('#header h1').text(msg.ping.url);
+      active_ping.animate({opacity: .2}, 500);
+      active_ping.animate({opacity: 1}, 500);
     }
+    $('#header h1').text('idrmx.');
   });
 
   // helpers
@@ -69,7 +71,7 @@ $(function() {
 
   function computeColor(count) {
     var green = 255 - count;
-    green = Math.round((255 - (count * 10)));
+    green = Math.round((255 - (count * 5)));
     if (green < 0) {
       green = "00";
     } else if (green >= 0 && green <= 15) {
