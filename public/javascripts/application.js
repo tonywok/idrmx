@@ -40,15 +40,27 @@ $(function() {
       active_ping = $('.ping a[href=http://' + msg.ping.url + ']').parent();
       active_ping = updatePing(active_ping, msg.ping);
     }
+    $('#header h1').trigger('notify', msg, active_ping);
 
-    for(var i=0; i<2; i++) {
-      $('#header h1').text(msg.ping.url);
-      active_ping.animate({opacity: .2}, 500);
-      active_ping.animate({opacity: 1}, 500);
+    for(var i=0; i<6; i++) {
+      active_ping.animate({opacity: .2}, 300);
+      active_ping.animate({opacity: 1}, 300);
     }
-    $('#header h1').text('idrmx.');
   });
 
+  $('#header h1').bind('notify', function(e, msg) {
+    $(this).fadeOut('slow', function() {
+      $(this).css('text-shadow', "0 0 4px #FFF");
+      $(this).text(msg.ping.url);
+      $(this).fadeIn(2000, function() {
+        $(this).fadeOut(1000, function() {
+          $(this).css('text-shadow', "none");
+          $(this).text('idrmx.');
+          $(this).fadeIn('slow');
+        });
+      });
+    });
+  });
   // helpers
 
   function updatePing(ping, data) {
